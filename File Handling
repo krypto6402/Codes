@@ -1,60 +1,39 @@
-/*Q.1
-Create a structure to store data of 100 students. The data to be stored is 
-name, contact_number, roll no, marks, date of birth and date of admission 
-(where date of admission and date of birth have three members i.e. day, month and year).
-Display details of students, having percentage greater than 80.
-*/
-
-#include<stdio.h>
-struct school
-{
-	char name[100];
-	char pno[10];
-        int rno;
-        int marks;
-	char dob[12];
-	char doa[12];
-};
-
-int main()
-{
-		int n,i;
-		printf("Enter the number of students : ");
-		scanf("%d",&n);
-		struct school t[n];
-		char ch;
-		for(i=0;i<n;i++)
-		{
-			printf("Enter the name of student : ");
-			ch = getchar();
-			scanf("%[^\n]%*c",t[i].name);
-			printf("Enter the Contact Number : ");
-			scanf("%[^\n]%*c",&t[i].pno);
-			printf("Enter the Roll Number : ");
-			scanf("%d",&t[i].rno);
-			printf("Enter the Marks : ");
-			scanf("%d",&t[i].marks);
-			printf("Enter the Date of birth : ");
-			scanf("%s",t[i].dob);
-			printf("Enter the Date of admission : ");
-			scanf("%s",t[i].doa);
-                        printf("\n");
-		}
-		for(i=0;i<n;i++)
-		{
-			if((t[i].marks)/5 >=80)
-                        {
-			printf("\nName of student : %s",t[i].name);
-			printf("\nContact Number : %s",t[i].pno);
-			printf("\nRoll Number : %d",t[i].rno);
-			printf("\nMarks : %d",t[i].marks);
-                        printf("\nPercentage : %d ",t[i].marks/5);
-			printf("\nDate of birth : %s",t[i].dob);
-			printf("\nDate of admission : %s",t[i].doa);
-                        }
-		}
-		return 0;
-}	
+ALGORITHM 1
+STEP 1 : Start.
+STEP 2 : Take s=0 & even,odd,prime,main as file pointers.
+STEP 3 : Open data.txt file in write mode using  fopen() function and assign it to main.
+STEP 4 : Take n as number of inputs.
+STEP 5 : i=0.
+STEP 6 : If i<n go to STEP 7 otherwise go to STEP 10.
+STEP 7 : Input a.
+STEP 8 : Use putw(a,main)funtion.
+STEP 9 : i=i+1 and go to STEP 6.
+STEP 10: Close main using fclose() function.
+STEP 11: Open data.txt file in read mode using  fopen() function and assign it to main.
+STEP 12: Open odd.txt file in write mode using fopen() function and assign it to odd.
+STEP 13: Open even.txt file in write mode using fopen() function and assign it to even.
+STEP 14: Open prime.txt file in write mode using fopen() function and assign it to prime.
+STEP 15: If any of the main,even,odd or prime is NULL then print error message and go to stop.
+STEP 16: if a=getw(main)!=EOF go to STEP 17 otherwise STEP 25.
+STEP 17: if a%2=0 , then putw(a,even).
+STEP 18: if a%2!=0 ,then putw(a,odd).
+STEP 19: if a%2!=0 or a==2 , to sto STEP 20.
+STEP 20: if a>1 then assign i=2.
+STEP 21: if i<a then to to STEP 22 otherwise STEP 23
+STEP 22: if a%i=0 then s=1 and use break and to STEP 21.
+STEP 23: if !s ,then putw(a,prime).
+STEP 24: s=0 and go to STEP 16.
+STEP 25: Close main,even,odd,prime using fclose() function.
+STEP 26: Open data.txt file in read mode using fopen() function and assign it to main.
+STEP 27: Open odd.txt file in read mode using fopen() function and assign it to odd.
+STEP 28: Open even.txt file in read mode using fopen() function and assign it to even.
+STEP 29: Open prime.txt file in read mode using fopen() function and assign it to prime.
+STEP 30: Print content of main file by while((a=getw(main))!=EOF) and print a.
+STEP 31: Print content of odd  file by while((a=getw(odd))!=EOF) and print a.
+STEP 32: Print content of even  file by while((a=getw(even))!=EOF)  and print a.
+STEP 33: Print content of prime file by while((a=getw(prime))!=EOF)  and print a.
+STEP 34: Close main,even,odd,prime using fclose() function.
+STEP 35: Stop.
 
 
 
@@ -65,595 +44,678 @@ int main()
 
 
 
-
-
-
-
-
-
-
-
-/*Q2.
-Write a c program to compare two given dates using function named compare ().
-And print following messages in the main function based on returned value by the function:
-a) “dates are equal”, if returned value is 0.
-b) “date1 is greater than date2”, if returned value is 1.
-c) “date1 is smaller than date2”, if returned value is -1.
-*/
-
-#include<stdio.h>
-struct Date
-{
-     int date;
-     int month;
-     int year;
-};
-int compare()
-{
-    struct Date d1,d2;
-    printf("Enter first date(dd mm yyyy):");
-    scanf("%d%d%d",&d1.date,&d1.month,&d1.year);
-    printf("\nEnter second date(dd mm yyyy):");
-    scanf("%d%d%d",&d2.date,&d2.month,&d2.year);
-    if((d1.date==d2.date)&&(d1.month==d2.month)&&(d1.year==d2.year))
-    return 0;
-    else if((d1.year>d2.year) || (d1.year==d2.year && d1.month > d2.month) || (d1.year == d2.year && d1.month == d2.month && d1.date > d2.date))
-    return 1;
-    else
-    return -1;
-}
-int main()
-{
-    int rtrn=compare();
-    if(rtrn==0)
-    printf("\nDate 1 and Date 2 are equal");
-    else if (rtrn==1)
-    printf("\nDate 1 is greater than Date 2 ");
-    else
-    printf("\nDate 1 is smaller than Date 2");
-    return 0;
-}
-
-
-
-
-
-
-
-
-
-
-/*Q3.
-Write a c program to calculate difference between two time periods using structures.
-*/
-
-#include <stdio.h>
-struct time
-{
-  int s;
-  int m;
-  int h;
-};
-void timediff(struct time t1, struct time t2, struct time *diff)
-{
-    if(t2.s > t1.s)
-    {
-        --t1.m;
-        t1.s += 60;
-    }
- 
-    diff->s = t1.s - t2.s;
-    if(t2.m > t1.m)
-    {
-        --t1.h;
-        t1.m += 60;
-    }
- 
-    diff->m = t1.m - t2.m;
-    diff->h = t1.h - t2.h;
-}
- 
-int main()
-{
-    struct time t1, t2, diff;
-    printf("Enter time 1 (hours, minutes and seconds ): ");
-    scanf("%d%d%d", &t1.h, &t1.m, &t1.s);
-    printf("Enter time 2 (hours, minutes and seconds ): ");
-    scanf("%d %d %d", &t2.h, &t2.m, &t2.s);
- 
-    timediff(t1, t2, &diff);
-    printf("\nTime Difference: %d:%d:%d - %d:%d:%d",t1.h,t1.m,t1.s,t2.h,t2.m,t2.s);
-    printf(" = %d:%d:%d\n", diff.h, diff.m, diff.s);
- 
-    return 0;
-}
-
-
-
-
-
-
-/*Q4.
-Write a c program to add two distances (in inch-feet system) using structures.
-*/
-
-#include<stdio.h>
-struct dist
-{
-    int feet;
-    float inch;
-} d1, d2, sum;
-
-int main()
-{
-    printf("Enter details for 1st distance\n");
-    printf("Enter feet: ");
-    scanf("%d", &d1.feet);
-    printf("Enter inch: ");
-    scanf("%f", &d1.inch);
-    printf("\nEnter details for 2nd distance\n");
-    printf("Enter feet: ");
-    scanf("%d", &d2.feet);
-    printf("Enter inch: ");
-    scanf("%f", &d2.inch);
-    sum.feet=d1.feet+d2.feet;
-    sum.inch=d1.inch+d2.inch;
-
-    if (sum.inch>12.0)
-    {
-        sum.inch-=12.0;
-        ++sum.feet;
-    }
-    printf("\nSum of distances = %d' %.1f\"", sum.feet,sum.inch);
-    return 0;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*Q5.
-Create a structure to store data of 100 customers in a bank. The data to be stored 
-is account number, Name, Balance in the account. Then 
-a. Write a function to print account number and name of each customer with a balance<1,00,000.
-b. Write a function to perform withdrawal and deposit. If customer request for withdrawal 
-or deposit, it is given in the form: account number, amount, code 
-(1 for deposit and 0 for withdrawal)
-Write a c program to print a message, “The balance is insufficient for the specified withdrawal”.
-*/
-#include <stdio.h>
-struct bank
-{
-	char name[100];
-    int accno;
- 	int bal;
-}t[100];
-
-void minbal(int n)
-{
-        for(int i=0;i<n;i++)
-        if(t[i].bal<100000)
-    {       printf("\nDetails of bank holders having balance less than 1,00,000");
-            printf("\nName of bank holder : %s \nAccount number : %d \n",t[i].name,t[i].accno);
-    }
-}
-void withdraw(int i,int amt)
-{ 
-  if(t[i].bal<amt)
-  printf("\nInsufficient Balance");
-  else
-  t[i].bal-=amt;
- printf("Updated Details :\nName of bank holder : %s \nAccount Balance : %d \n",t[i].name,t[i].bal);
-}
-void deposit(int i,int amt)
-{
- t[i].bal+=amt;
- printf("Updated Details :\nName of bank holder : %s \nAccount Balance : %d \n",t[i].name,t[i].bal);
-}
-int main()
-{
-        int n,i;
-	printf("Enter the number of customers : ");
-	scanf("%d",&n);
-        char ch;
-        for(i=0;i<n;i++)
-        {
-	printf("Enter the name of bank holder : ");
-	ch= getchar();
-	scanf("%[^\n]%*c",t[i].name);
-	printf("Enter the account number : ");
-	scanf("%ld",&t[i].accno);
-	printf("Enter the balance amount : ");
-	scanf("%ld",&t[i].bal);
-        }
-        minbal(n);
-        int code,amt,acno;
-        printf("\nEnter Withdraw or Deposit Request Codes\n1 For Deposit.\n0 For Withdraw\nFormat:Account_number Amount Code\n");
-        printf("Enter : ");
-        scanf("%d%d%d",&acno,&amt,&code);
-        for(i=0;i<n;i++)
-        {
-        if(t[i].accno==acno)
-          {
-            if(code==0)
-             withdraw(i,amt);
-            else if(code==1)
-            deposit(i,amt);
-            else
-             printf("\nInvalid code");
-          }
-        }
-        return 0;
-	
-}
-
-/*Q6.
-Write a c program to add two complex numbers by passing structure to a function and result should be printed in main function.
-#include<stdio.h>
-struct comp
-{
-    float rl;
-    float img;
-}c1,c2;
-struct comp complexsum(struct comp *a,struct comp *b)
-{
-    struct comp temp;
-    temp.rl = (*a).rl + (*b).rl;
-    temp.img = (*(a)).img + (*(b)).img;
-    return temp;
-}
-int main(){
-    struct comp result;
-    printf("Enter Complex Number 1: ");
-    scanf("%f%f",&c1.rl, &c1.img);
-    printf("Enter Complex Number 2: ");
-    scanf("%f%f",&c2.rl,&c2.img);
-    result = complexsum(&c1,&c2);
-    printf("The sum is %.2f + %.2fi\n", result.rl,result.img);
-    return 0;
-}
-/*Q7.
-Write a menu driven program that depicts the working of a library The menu options should be: 
-a. Call a function named addbookdetail() to add book details(title, author name, price, edition, quantity, accession number and flag indicating whether the book is issued or not). After addition of a book, number of books should be increased by 1.
- b. Call a function named total_cost() to display total cost of each different book.
- c. Call a function named book_sort() to display book details sorted title wise.
- d. Call a function named book_search() to list all books of a given author. If available, display all details. Otherwise display a message “Not Available”.
- e. Call a function named book_quantity() to display total number of books in library.
- f. Call a function named issue_book() to issue a book. If someone issue a book then number of books should be decreased by 1.
- g. Call a function named dis_book() to display the books in the order of accession number. 
-h. Call a function named list_title() to display the title of a specified book.
+CODE 1
+/*Q1.
+C program to input 10 integers in a file.Copy even,odd and prime numbers into seperate files
+also display contents of all four files.
 */
 #include<stdio.h>
-#include<string.h>
-void add();
-void tcost();
-void sort();
-void search();
-void qty();
-void issue();
-void accorder();
-void list();
-
-struct lib
+#include<stdlib.h>
+void main()
 {
- int accno;
- char title[20];
- char author[20];
- int cost;
- int edition;
-}b[100];
-int count;
-int main()
-{ int ch;
-  printf("\n \t\tMENU\n");
-  printf("\n 1: To add book details\n");
-  printf("\n 2: Total cost of each books\n");
-  printf("\n 3: Book sort on the bases of title\n");
-  printf("\n 4: Search book on the bases of Author\n");
-  printf("\n 5: Total books quantity\n");
-  printf("\n 6: Issue a Book\n");
-  printf("\n 7: Sort on the bases of accesion no.\n");
-  printf("\n 8: Display book title\n");
-  printf("\n Enter the choice :");
-  scanf("%d",&ch);
-  switch(ch)
-  {
-   case 1:add();
-    break;
-   case 2:tcost();
-    break;
-   case 3:sort();
-    break;
-   case 4:search();
-    break;
-   case 5:qty();
-    break;
-   case 6:issue();
-    break;
-   case 7:accorder();
-    break;
-   case 8:list();
-    break;
-  }
-return 0;
-}
-//***********************
-void add()
-{
- printf("\n enter the detail of book \n");
- printf("\n enter the book title=");
- gets(b[count].title);
- printf("\n enter the name of author=");
- gets(b[count].author);
- printf("\n enter the cost of book=");
- scanf("%d",&b[count].cost);
- printf("\n enter the edition of book=");
- scanf("%d",&b[count].edition);
- printf("\n enter accession number of book =");
- scanf("%d",&b[count].accno);
- count++;
-}
-//*********************
-void tcost()
-{
- int i,cnt=0;
- for(i=0;i<count;i++)
- {
-   printf("\n%s:%d",b[i].title,b[i].cost);
-   cnt+=b[i].cost;
- }
- printf("\n Total cost of books : &d",cnt);
-}
-//*******************
-void sort()
-{
-    int i,j,temp;
-    char name[30];
-   for(i=0;i<count;i++)
-   {
-       for(j=0;j<count-1;j++)
-       {
-           if(strcmp(b[j].title,b[j+1].title)>=0)
-           {
-               strcpy(name,b[j].title);
-               strcpy(b[j].title,b[j+1].title);
-               strcpy(b[j+1].title,name);
-                temp=b[j].accno;
-               b[j].accno=b[j+1].accno;
-               b[j+1].accno=temp;
-            }
-       }
-   }
-   for(i=0;i<count;i++)
-   printf("\n %s : %d",b[i].title,b[i].accno);
-}
-//**********************
-void search()
-{
- int i,cnt=0;
- char name[20];
- printf("\n enter the name of author=");
- gets(name);
- for(i=0;i<count;i++)
- {
-  if(strcmp(name,b[i].author)==0)
-  {
-   cnt++;
-   printf("\n %d\n%s\n%s\n%d",b[i].accno,b[i].title,b[i].author,b[i].cost);
-  }
- }
- if(cnt==0)
-  printf("\n Not Available \n");
-}
-//*******************************
-void qty()
-{
- printf("\n total no of book in library =%d",count);
-}
-//*******************************
-void issue()
-{
- int i,cnt=0;
- char name[20];
- printf("\n enter the book title to be issued=");
- gets(name);
- for(i=0;i<count;i++)
- {
-  if(strcmp(name,b[i].title)==0)
-  {
-   cnt++;
-   printf("\n yes this book is available and can be issued");
-  }
- }
- if(cnt==0)
-  printf("\n Not available issued to someone\n");
-}
-//*******************************
-void accorder()
-{
-    int i,j,temp;
-    char name[30];
-   for(i=0;i<count;i++)
-   {
-       for(j=0;j<count-1;j++)
-       {
-           if(b[j].accno>b[j+1].accno)
-           {
-               temp=b[j].accno;
-               b[j].accno=b[j+1].accno;
-               b[j+1].accno=temp;
-               strcpy(name,b[j].accno);
-               strcpy(b[j].accno,b[j+1].accno);
-               strcpy(b[j+1].accno,name);
-           }
-       }
-  }
-   for(i=0;i<count;i++)
-   printf("\n %d : %s",b[i].accno,b[i].title);
-}
-//*******************************
-void list()
-{
- int i,cnt=0,no;
- printf("\n enter the accession number = ");
- scanf("%d",&no);
- for(i=0;i<count;i++)
- {
-  if(no==b[i].accno)
-  {
-   cnt++;
-   printf("\n %s\n%s\n%d",b[i].title,b[i].author,b[i].cost);
-  }
- }
- if(cnt==0)
-  printf("\n Not Available \n");
-}
-
-
-/*Q8.
-An automobile company has the serial number for engine parts starting from AA0 to FF9. Other characteristics of parts to be specified in a structure are: material, quantity and date of manufacture. Write a program to retrieve information on parts with serial numbers between BB1 and CC6.
-*/
-#include<stdio.h>
-#include<string.h>
-struct car
-{
- char serial[50],mat[50],dom[10];
- int qty;
-};
-int main()
-{
- int n,i;
- printf("Enter Number : ");
+ int a,n,i,s=0;
+ FILE *even,*odd,*prime,*main;
+ main=fopen("DATA.txt","w");
+ printf("How many numbers : ");
  scanf("%d",&n);
- struct car t[n];
+ printf("Enter contents of DATA file : \n");
  for(i=0;i<n;i++)
- {
-   printf("\nEnter Serial number : ");
-   scanf("%s",t[i].serial);
-   printf("\nEnter Material : ");
-   scanf("%s",t[i].mat);
-   printf("\nEnter Date of Manufacturing : ");
-   scanf("%s",t[i].dom);
-   printf("\nEnter Quantity : ");
-   scanf("%d",&t[i].qty);
- }
- for(i=0;i<n;i++)
- {
-   if(strcmp(t[i].serial,"BB1")>=0 && strcmp(t[i].serial,"CC6")<=0)
-   { 
-   printf("\nSerial number : %s",t[i].serial);
-   printf("\nMaterial : %s",t[i].mat);
-   printf("\nDate of Manufacturing : %s",t[i].dom);
-   printf("\nQuantity %d",t[i].qty);
-   }
- }
-return 0;
-}
-
-
-
-
-
-
-
-
-
-
-/*Q9.
-There is a structure called employee that holds information like employee code, name, date of joining. Write a c program to create an array of structure and enter some data into it. Then ask the user to enter the current date. Display the names of those employees whose tenure is 3 or more than 3 years according to the given current date.
-*/
-#include<stdio.h>
-struct emp
-{
-char ecode[30],name[30];
-int d,m,y;
-};
-
-int main()
-{
- int n;
- printf("Enter number of Employees : ");
- scanf("%d",&n);
- struct emp t[n];
- int i,x,y,z;
-
- for(i=0;i<n;i++)
- {
-   printf("\nEnter Employee Code : ");
-   scanf("%s",t[i].ecode);
-   printf("\nEnter Employee Name : ");
-   scanf("%s",t[i].name);
-   printf("\nEnter Date of joining (dd mm yyyy) : ");
-   scanf("%d%d%d",&t[i].d,&t[i].m,&t[i].y);
- }
- printf("\nEnter Current Date (dd mm yyyy) : ");
- scanf("%d%d%d",&x,&y,&z);
- for(i=0;i<n;i++)
-  if((z-t[i].y)>=3)
-   printf("\n%s",t[i].name);
-return 0;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*Q10.
-Write a c program to implement below scheme: There are five players from which the most valuable player (MVP) is to be chosen. Each player is to be judged by 3 judges, who would assigned a rank to each player. The player whose sum of rank is highest is chosen as MVP.
-*/
-#include<stdio.h>
-struct point
-{
-int j1,j2,j3;
-};
-
-int main()
-{
- struct point t[5];
- int i;
- for(i=0;i<5;i++)
- {
-   printf("\nEnter Points given to player %d by judge 1 : ",i+1);
-   scanf("%d",&t[i].j1);
-   printf("\nEnter Points given to player %d by judge 2 : ",i+1);
-   scanf("%d",&t[i].j2);
-   printf("\nEnter Points given to player %d by judge 3 : ",i+1);
-   scanf("%d",&t[i].j3);
- }
-int index,sum,mvp=t[0].j1+t[0].j2+t[0].j3;
-  for(i=0;i<5;i++)
- {
-  sum = t[i].j1 + t[i].j2 + t[i].j3 ; 
-  if(mvp<sum)
   {
-   mvp=sum;
-   index = i; 
+   scanf("%d",&a);
+   putw(a,main);
   }
+
+ fclose(main);
+ main=fopen("DATA.txt","r");
+ odd=fopen("odd.txt","w");
+ even=fopen("even.txt","w");
+ prime=fopen("prime.txt","w");
+ if(main==NULL||even==NULL||odd==NULL||prime==NULL)
+ {
+ printf("File could not open");
+ exit(0);
  }
-printf("\nMVP is %d .",++index);
-return 0;
+
+ while((a=getw(main))!=EOF)
+ { 
+  if(a%2==0)
+      putw(a,even);
+  if(a%2!=0)
+      putw (a,odd); 
+  if(a%2!=0 || a==2)
+   {
+      if(a>1)
+       {
+         for(i=2; i<a; i++ )
+             {
+               if(a%i==0)
+                  {
+                     s=1;
+                     break;
+                  }
+             }
+         if(!s)
+            putw(a,prime);
+       }       
+         s=0;
+   }
+ }
+ fclose(main);
+ fclose(even);
+ fclose(odd);
+ fclose(prime);
+
+ main=fopen("DATA.txt","r");
+ odd=fopen("odd.txt","r");
+ even=fopen("even.txt","r");
+ prime=fopen("prime.txt","r");
+
+ printf("\nContents of MAIN file:");
+ while((a=getw(main))!=EOF)
+ printf("%d ",a); 
+
+ printf("\nContents of ODD file:");
+ while((a=getw(odd))!=EOF)
+ printf("%d ",a);
+
+ printf("\nContents of EVEN file:");
+ while((a=getw(even))!=EOF)
+ printf("%d ",a);
+ printf("\nContents of PRIME file:");
+ while((a=getw(prime))!=EOF)
+ printf("%d ",a);
+ fclose(main);
+ fclose(even);
+ fclose(odd);
+ fclose(prime);
 }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+ALGORITHM 2
+STEP 1 : Start.
+STEP 2 : Take count=0 & fptr as file pointers.
+STEP 3 : Open introduction.txt file in write mode using fopen() function and assign it to fptr.
+STEP 4 : Take a paragraph as inputs using fgets(intro, 100, stdin).
+STEP 5 : Use putw(intro,fptr)funtion.
+STEP 6 : Close fptr using fclose() function.
+STEP 7 : Open introduction.txt file in read mode using fopen() function and assign it to fptr.
+STEP 8 : If fptr is NULL then print error message and go to stop.
+STEP 9 : Take line=0,chr=0,space=0,conso=0,vowel=0.
+STEP 10: Take c=fgetc(fptr).
+STEP 11: if c!=EOF go to STEP 12 otherwise STEP 18.
+STEP 12: chr=chr+1..
+STEP 13: if c='\n' , then line=line+1.
+STEP 14: if c=' ' , then space=scape+1.
+STEP 15: if c is a,e,i,o,u or A,E,I,O,U , then vowel=vowel+1.
+STEP 16: if c>='a' and c<='z' OR c>='A' and c<='Z' , then conso=conso+1.
+STEP 17: Take c=fgetc(fptr) and go to STEP 11.
+STEP 18: Close fptr using fclose() function.
+STEP 19: Open introduction.txt file in read mode using fopen() function and assign it to fptr.
+STEP 20: Print "data :" and take ch=fgetc(fptr).
+STEP 21: Print content of introduction.txt file by while ch!=EOF  and print ch then take ch=fgetc(fptr).
+STEP 22: Close fptr using fclose() function.
+STEP 23: Print chr,vowel,conso,line,space.
+STEP 24: Stop.
+CODE 2
+/*Q2.
+C program to write your introduction in a file,display its contents and
+count number of characters,spaces,newline,consonants and vowels.
+*/
+#include <stdio.h> 
+int main() 
+{ 
+      FILE *fPtr;
+      char intro[100];
+      int count=0;
+      fPtr = fopen("introduction.txt", "w");    
+      printf("\nEnter introduction :");
+      fflush(stdin);          // To clear extra characters in queue
+      fgets(intro, 100, stdin);
+      fputs(intro, fPtr);
+	fclose(fPtr);   
+	char c,ch; 
+	fPtr = fopen("introduction.txt", "r"); 
+      if (fPtr == NULL) 
+	{ 
+		printf("Could not open file introduction.txt"); 
+		return 0; 
+	} 
+      int line=0,chr=0,space=0,conso=0,vowel=0;
+	for (c = fgetc(fPtr); c != EOF; c = fgetc(fPtr)) 
+	{	
+            chr++;
+            if (c == '\n') 
+		line++;
+            if(c==' ')
+            space++; 
+            if (c == 'a' || c == 'e' || c == 'i' ||c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U')
+            vowel++;
+            else if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+            conso++;
+      }
+	fclose(fPtr); 
+
+      fPtr = fopen("introduction.txt", "r");
+	printf("The file introduction.txt has ");
+      printf("\nData: ") ;
+      ch = fgetc(fPtr); 
+      while (ch != EOF) 
+      { 
+        printf ("%c", ch); 
+        ch = fgetc(fPtr); 
+      } 
+  
+      fclose(fPtr);
+      printf("Characters: %d",chr);
+      printf("\nVowels: %d",vowel);
+      printf("\nConsonants: %d",conso);
+      printf("\nLines: %d",line);
+      printf("\nSpaces: %d", space);      
+      return 0; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ALGORITHM 3
+STEP 1 : Start.
+STEP 2 : Take fptr as file pointers.
+STEP 3 : Input filename and assign it to file.
+STEP 4 : Open file in append mode using fopen() function and assign it to fptr.
+STEP 5 : If fptr is NULL then print error message and go to stop.
+STEP 6 : Take data to append as inputs using fgets(append, 100, stdin).
+STEP 7 : Use fputs(append,fptr)funtion.
+STEP 8 : Close fptr using fclose() function.
+STEP 9 : Open file in read mode using fopen() function and assign it to fptr.
+STEP 10: Take ch=fgetc(fptr).
+STEP 11: Print content file by while ch!=EOF  and print ch then take ch=fgetc(fptr).
+STEP 12: Close fptr using fclose() function.
+STEP 13: Stop.
+
+
+
+
+
+
+
+
+
+
+
+CODE 3
+/*Q3.
+C program to append data into a file.
+*/
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    FILE *fptr;
+    char file[100],append[100],ch;
+    printf("Enter file name :");
+    scanf("%s", file);
+    fptr = fopen(file, "a");
+    if (fptr == NULL)
+    {
+        printf("\nUnable to open file.\n");
+        exit(0);
+    }
+    printf("Enter data to append :");
+    fflush(stdin);          // To clear extra white space characters in stdin
+    fgets(append, 100, stdin);
+    fputs(append, fptr);
+    fclose(fptr);
+    fptr = fopen(file, "r");
+   printf("\nChanged file contents :\n");
+    ch = fgetc(fptr);
+    while (ch != EOF)
+    { 
+        printf("%c", ch); 
+        ch = fgetc(fptr); 
+    }
+    fclose(fptr);
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ALGORITHM 4
+STEP 1 : Start.
+STEP 2 : Take diff=0 and fptr1 ,fptr2 as file pointers.
+STEP 3 : Input first filename and assign it to path1.
+STEP 4 : Input second filename and assign it to path2.
+STEP 5 : Open path1 file in read mode using fopen() function and assign it to fptr1.
+STEP 6 : Open path2 file in read mode using fopen() function and assign it to fptr2.
+STEP 7 : If fptr1 or fptr2 is NULL then print error message and go to stop.
+STEP 8 : Start do while loop by do{.
+STEP 9 : Take ch1=fgetc(fptr1) and ch2=fgetc(fptr2).
+STEP 10: if ch!=ch2 then go to STEP 11.
+STEP 11: diff=diff+1 and break then go to STEP 12.
+STEP 12: while(ch1!=EOF and ch2!=EOF).
+STEP 13: if diff=0 then print "Both files are equal" otherwise fo to STEP 14.
+STEP 14: print "Files are not Equal.".
+STEP 15: Close fptr1 and fptr2 using fclose() function.
+STEP 16: Stop.
+
+
+
+
+
+
+
+
+CODE 4
+/*Q4.
+C program to compare two file.
+*/
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+
+    FILE * fPtr1,* fPtr2;
+    char path1[100],path2[100];
+    int diff=0;
+    printf("Enter name of first file: ");
+    scanf("%s", path1);
+    printf("Enter name of second file: ");
+    scanf("%s", path2);
+    fPtr1 = fopen(path1, "r");
+    fPtr2 = fopen(path2, "r");
+    if (fPtr1 == NULL || fPtr2 == NULL)
+    {
+        printf("\nUnable to open file.\n");
+        exit(1);
+    }
+    char ch1, ch2;
+    do
+    {   
+        ch1 = fgetc(fPtr1);
+        ch2 = fgetc(fPtr2);
+        if (ch1 != ch2)
+        {
+            diff++;
+            break;
+        }
+    } while (ch1 != EOF && ch2 != EOF);
+    if (diff == 0)
+        printf("\nBoth files are equal.");
+    else 
+        printf("\nFiles are not equal.\n");
+    fclose(fPtr1);
+    fclose(fPtr2);
+    return 0;
+}
+
+
+
+
+
+
+
+
+ALGORITHM 5
+STEP 1 : Start.
+STEP 2 : Take fa ,fb and fc as file pointers.
+STEP 3 : Input first filename and assign it to file1.
+STEP 4 : Input second filename and assign it to file2.
+STEP 5 : Open merged.txt file in write mode using fopen() function and assign it to fc.
+STEP 6 : Open file1 file in read mode using fopen() function and assign it to fa.
+STEP 7 : Open file2 file in read mode using fopen() function and assign it to fb.
+STEP 8 : If fa or fb is NULL then print error message and go to stop.
+STEP 9 : while (ch=fgetc(fa))!=EOF then go to STEP 10.
+STEP 10: Use fputc(ch,fc)funtion.
+STEP 11: print " ".
+STEP 12: while (ch=fgetc(fb))!=EOF then go to STEP 13.
+STEP 13: Use fputc(ch,fc)funtion.
+STEP 14: Close fa, fb, fc using fclose() function.
+STEP 15: Open merged.txt file in read mode using fopen() function and assign it to fc.
+STEP 16: while (ch=fgetc(fc))!=EOF then go to STEP 17 otherwise STEP 18.
+STEP 17: print ch and go to STEP 16.
+STEP 18: Close fc using fclose() function.
+STEP 19: Stop.
+
+
+
+
+
+CODE 5
+/*Q5.
+C program to merge content of two files into a third file.
+*/
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+  FILE *fa, *fb, *fc;
+  char ch, file1[20], file2[20], file3[20];
+  printf("Enter name of first file :");
+  gets(file1);
+  printf("Enter name of second file :");
+  gets(file2);
+  fc = fopen("merged.txt", "w");
+
+  fa = fopen(file1, "r");
+  fb = fopen(file2, "r");
+  if (fa == NULL || fb == NULL)
+  {
+    printf("Unable to open file\n");
+    exit(1);
+  }
+  while ((ch = fgetc(fa)) != EOF)
+    fputc(ch,fc);
+  fprintf(fc," ");
+  while ((ch = fgetc(fb)) != EOF)
+    fputc(ch,fc);
+  fclose(fa);
+  fclose(fb);
+  fclose(fc);
+  printf("The two files were merged into merged.txt file :\n");
+  fc=fopen("merged.txt","r");
+  while ((ch = fgetc(fc)) != EOF)
+  printf("%c",ch);
+  fclose(fc);
+  return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+ALGORITHM 6
+STEP 1 : Start.
+STEP 2 : Take fptr as file pointers.
+STEP 3 : Open student.txt file in write mode using fopen() function and assign it to fptr.
+STEP 4 : If fptr is NULL then print error message and go to stop.
+STEP 5 : Input deatils of the student.
+STEP 6 : Input Name= s.name, Age= s.age, Roll no.= s.roll, Percentage= s.per.
+STEP 7 : Use fwrite() function as fwrite (&s, sizeof(struct student), 1, fptr).
+STEP 8 : if fwrite!=0 ,then go to STEP 9 otherwise STEP 10.
+STEP 9 : print "Student recorded sucessfully", go to STEP 11.
+STEP 10: print "Error writing record", go to STEP 11.
+STEP 11: Close fptr using fclose() function.
+STEP 12: Stop.
+
+
+
+
+
+
+
+
+
+
+
+
+CODE 6
+/*Q6.
+C program to write students records ( name, age, roll no. ,percentage) in
+a text file using structures.
+*/
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <string.h> 
+struct student 
+{ 
+    char name[20]; 
+    int age,roll,per;
+}; 
+
+int main () 
+{ 
+	FILE *fptr; 
+	fptr = fopen ("student.txt", "w"); 
+	if (fptr == NULL) 
+	{ 
+		printf("\nUnable to open file"); 
+		exit (1); 
+	} 
+    struct student s;
+    printf("Enter Student details as follow :");
+    printf("\nEnter name :");
+    gets(s.name);
+    printf("Enter age :");
+    scanf("%d",&s.age);
+    printf("Enter roll number :");
+    scanf("%d",&s.roll);
+    printf("Enter percentage :");
+    scanf("%d",&s.per); 
+	fwrite (&s, sizeof(struct student), 1, fptr); 
+	if(fwrite != 0) 
+		printf("Student is recorded successfully !\n"); 
+	else
+		printf("Error writing record\n"); 
+	fclose (fptr); 
+    return 0; 
+}
+
+
+
+
+
+
+
+
+
+ALGORITHM 7
+STEP 1 : Start.
+STEP 2 : Take fptr as file pointers.
+STEP 3 : Open student.txt file in read mode using fopen() function and assign it to fptr.
+STEP 4 : If fptr is NULL then print error message and go to stop.
+STEP 5 : while fread(&s, sizeof(struct student), 1, fptr) using fread() function.
+STEP 6 : Deatils of the student.
+STEP 7 : Name= s.name, Age= s.age, Roll no.= s.roll, Percentage= s.per.
+STEP 8 : Close fptr using fclose() function.
+STEP 9 : Stop.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CODE 7
+/*Q7.
+C program to read students record ( name, age, roll no. ,percentage) in
+a text file using structures.
+*/
+#include <stdio.h> 
+#include <stdlib.h>  
+struct student { 
+      char name[20]; 
+      int age,roll,per;
+}; 
+int main () 
+{ 
+	FILE *fptr; 
+	struct student s; 
+               fptr = fopen ("student.txt", "r"); 
+	if (fptr == NULL) 
+	{           printf("\nError opening file\n"); 
+		exit (1); 
+	} 
+	 while(fread(&s, sizeof(struct student), 1, fptr)) 
+	printf ("Details : \nName = %s\nAge = %d\nRoll no. = %d\nPercentage = %d\n", s.name, s.age, s.roll, s.per); 
+	fclose (fptr); 
+      return 0; 
+}
+ALGORITHM 8
+STEP 1 : Start.
+STEP 2 : Take fptr as file pointers.
+STEP 3 : Open student.dat file in write mode using fopen() function and assign it to fptr.
+STEP 4 : If fptr is NULL then print error message and go to stop.
+STEP 5 : Input deatils of the student.
+STEP 6 : Input Name= s.name, Age= s.age, Roll no.= s.roll, Percentage= s.per.
+STEP 7 : Use fwrite() function as fwrite (&s, sizeof(struct student), 1, fptr).
+STEP 8 : if fwrite!=0 ,then go to STEP 9 otherwise STEP 10.
+STEP 9 : print "Student recorded sucessfully", go to STEP 11.
+STEP 10: print "Error writing record", go to STEP 11.
+STEP 11: Close fptr using fclose() function.
+STEP 12: Stop.
+
+
+
+
+
+
+
+
+
+
+
+
+CODE 8
+/*Q8.
+C program to write students records ( name, age, roll no. ,percentage) in
+a binary file using structures.
+*/
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <string.h> 
+struct student 
+{ 
+    char name[20]; 
+    int age,roll,per;
+}; 
+
+int main () 
+{ 
+	FILE *fptr; 
+	fptr = fopen ("student.dat", "w"); 
+	if (fptr == NULL) 
+	{ 
+		printf("\nUnable to open file"); 
+		exit (1); 
+	} 
+    struct student s;
+    printf("Enter Student details as follow :");
+    printf("\nEnter name :");
+    gets(s.name);
+    printf("Enter age :");
+    scanf("%d",&s.age);
+    printf("Enter roll number :");
+    scanf("%d",&s.roll);
+    printf("Enter percentage :");
+    scanf("%d",&s.per); 
+	fwrite (&s, sizeof(struct student), 1, fptr); 
+	if(fwrite != 0) 
+		printf("Student is recorded successfully !\n"); 
+	else
+		printf("Error writing record\n"); 
+	fclose (fptr); 
+    return 0; 
+}
+
+
+
+
+
+
+
+
+
+ALGORITHM 9
+STEP 1 : Start.
+STEP 2 : Take fptr as file pointers.
+STEP 3 : Open student.txt file in read mode using fopen() function and assign it to fptr.
+STEP 4 : If fptr is NULL then print error message and go to stop.
+STEP 5 : while fread(&s, sizeof(struct student), 1, fptr) using fread() function.
+STEP 6 : Deatils of the student.
+STEP 7 : Name= s.name, Age= s.age, Roll no.= s.roll, Percentage= s.per.
+STEP 8 : Close fptr using fclose() function.
+STEP 9 : Stop.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CODE 9
+/*Q9.
+C program to read students record ( name, age, roll no. ,percentage) in
+a binary file using structures.
+*/
+#include <stdio.h> 
+#include <stdlib.h>  
+struct student 
+{ 
+      char name[20]; 
+      int age,roll,per;
+}; 
+int main () { 
+	FILE *fptr; 
+	struct student s; 
+               fptr = fopen ("student.dat", "r"); 
+	if (fptr == NULL) 
+	{            printf("\nError opening file\n"); 
+		exit (1); 
+	} 
+	 while(fread(&s, sizeof(struct student), 1, fptr)) 
+	printf ("Details : \nName = %s\nAge = %d\nRoll no. = %d\nPercentage = %d\n", s.name, s.age, s.roll, s.per); 
+	fclose (fptr); 
+      return 0; 
+}
