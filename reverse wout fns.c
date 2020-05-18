@@ -16,3 +16,33 @@ arr2[i]=arr1[j];
 }
 printf("%s",arr2);
 }
+
+//USING RECURSION
+/*
+#include<stdio.h>
+void reverse(char a[], int x, int y)
+{
+   char c;
+
+   if (x >= y)
+      return;
+   else
+   {
+   c = a[x];
+   a[x] = a[y];
+   a[y] = c;
+   }
+   reverse(a, ++x, --y);
+}
+int main()
+{
+   char a[100];
+   int i;
+   gets(a);
+   for(i=0;a[i]!='\0';i++);
+   reverse(a, 0, i-1);
+   printf("%s\n", a);
+   return 0;
+}
+
+*/
