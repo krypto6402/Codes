@@ -1,1 +1,2 @@
-Prime Sum 73475
+Composite : 444594
+Prime Sum : 73475
