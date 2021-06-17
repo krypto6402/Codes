@@ -12,7 +12,7 @@ public class MyDriver {
 	public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
 
 		Configuration conf = new Configuration();
-		Job m = new Job(conf, "Prime Sum");
+		Job m = new Job(conf, "Prime Sum : ");
 		m.setJarByClass(MyDriver.class);
 		m.setMapperClass(MyMapper.class);
 		m.setReducerClass(MyReducer.class);
